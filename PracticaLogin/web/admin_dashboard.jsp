@@ -12,14 +12,14 @@
         return;
     }
     
-    // 2. Obtener el HTML para las tablas de gestión (Lógica de LECTURA del CRUD)
+    // 2. Obtener el HTML para las tablas de gestión
     ControladorUsuario cu = new ControladorUsuario();
     String htmlTablaUsuarios = cu.getUsuariosHTML();
     
     ControladorEvento ce = new ControladorEvento();
     String htmlTablaEventos = ce.getTodosEventosHTML();
     
-    // 3.  Obtener el HTML para el dropdown de clientes
+    // 3. Obtener el HTML para el dropdown de clientes
     String htmlDropdownClientes = cu.getClientesDropdownHTML();
     
 %>
@@ -28,7 +28,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Dashboard Administrador - Nanos Land</title>
-    <!-- CSS de Bootstrap y FontAwesome para los iconos -->
+    <!-- CSS de Bootstrap y FontAwesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 </head>
@@ -50,36 +50,44 @@
         <h2>Panel de Administración</h2>
         <p>Desde aquí podrás gestionar usuarios y eventos.</p>
         
-        <!-- Alertas de éxito -->
+        <!-- --- ALERTAS DE ÉXITO Y ERROR --- -->
+        
+        <!-- Usuarios -->
         <% if ("1".equals(request.getParameter("user_created"))) { %>
             <div class="alert alert-success">¡Usuario creado con éxito!</div>
+        <% } %>
+        <% if ("1".equals(request.getParameter("user_updated"))) { %> <!-- ¡AQUÍ ESTÁ LA NUEVA ALERTA! -->
+            <div class="alert alert-success">¡Usuario modificado con éxito!</div>
         <% } %>
         <% if ("1".equals(request.getParameter("user_deleted"))) { %>
             <div class="alert alert-success">¡Usuario eliminado con éxito!</div>
         <% } %>
-        <% if ("1".equals(request.getParameter("event_deleted"))) { %>
-            <div class="alert alert-success">¡Evento eliminado con éxito!</div>
+        
+        <!-- Eventos -->
+        <% if ("1".equals(request.getParameter("exito_agenda"))) { %>
+            <div class="alert alert-success">¡Evento agendado con éxito!</div>
         <% } %>
         <% if ("1".equals(request.getParameter("event_updated"))) { %>
             <div class="alert alert-success">¡Evento modificado con éxito!</div>
         <% } %>
-        <% if ("1".equals(request.getParameter("exito_agenda"))) { %>
-            <div class="alert alert-success">¡Evento agendado con éxito!</div>
+        <% if ("1".equals(request.getParameter("event_deleted"))) { %>
+            <div class="alert alert-success">¡Evento eliminado con éxito!</div>
         <% } %>
-        <% if ("1".equals(request.getParameter("error_agenda"))) { %>
-            <div class="alert alert-danger">Error al agendar el evento.</div>
+        
+        <!-- Errores Generales -->
+        <% if (request.getParameter("error") != null || "1".equals(request.getParameter("error_agenda"))) { %>
+            <div class="alert alert-danger">Ocurrió un error en la operación.</div>
         <% } %>
 
         
         <div class="row">
-            <!-- Columna 1: CREAR Usuario (CRUD - Create) -->
+            <!-- Columna 1: CREAR Usuario -->
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header bg-dark text-white">
                         Crear Nuevo Usuario
                     </div>
                     <div class="card-body">
-                        <!-- Este formulario llama al servlet "crearUsuario" -->
                         <form action="crearUsuario" method="POST">
                             <div class="form-group">
                                 <label>Nombre:</label>
@@ -112,17 +120,14 @@
                 </div>
             </div>
             
-            <!-- Columna 2:Formulario para Agendar Evento -->
+            <!-- Columna 2: Agendar Evento -->
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
                         Agendar Nuevo Evento
                     </div>
                     <div class="card-body">
-                        <!-- Este formulario llama al servlet "agendarEvento" -->
                         <form action="agendarEvento" method="POST">
-                            
-                            
                             <div class="form-group">
                                 <label>Seleccionar Cliente:</label>
                                 <select name="id_cliente" class="form-control" required>
@@ -130,7 +135,6 @@
                                     <%= htmlDropdownClientes %>
                                 </select>
                             </div>
-                            
                             <div class="form-group">
                                 <label>Nombre del Evento:</label>
                                 <input type="text" name="nombre_evento" class="form-control" placeholder="Ej: Cumpleaños de Sofía" required>
@@ -158,7 +162,7 @@
         
         <hr class="my-4">
         
-        <!-- Fila 2: LEER y ELIMINAR Usuarios -->
+        <!-- Fila 2: LEER y GESTIONAR Usuarios -->
         <div class="row mt-4">
             <div class="col-12">
                 <h3>Gestionar Usuarios</h3>
@@ -181,7 +185,7 @@
         
         <hr class="my-4">
         
-        <!-- Fila 3: LEER, MODIFICAR y ELIMINAR Eventos -->
+        <!-- Fila 3: LEER y GESTIONAR Eventos -->
         <div class="row mt-4">
             <div class="col-12">
                 <h3>Gestionar Todos los Eventos</h3>

@@ -24,6 +24,11 @@
     <title>Dashboard Trabajador - Nanos Land</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <style>
+      
+       
+    </style>
+
 </head>
 <body>
     

@@ -6,7 +6,10 @@
     <title>Nanos Land - Iniciar Sesión</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <style>
-        body { background-color: #f8f9fa; }
+        body { background-color: #F3FC08; }
+        .card {
+            border: 2px solid #fbc02d; 
+        }
     </style>
 </head>
 <body>
@@ -14,10 +17,16 @@
         <div class="row justify-content-center mt-5">
             <div class="col-md-5">
                 <div class="card shadow-sm">
-                    <div class="card-body p-4">
-                        <h2 class="text-center mb-4">Bienvenido a Nanos Land</h2>
-                        
-                        <form action="login" method="POST">
+                   <div class="card-body p-4">
+
+                    <div class="text-center mb-3">
+                        <img src="img/logo.png" alt="Nanos Land Logo" style="width: 150px;">
+                    </div>
+
+                    <h2 class="text-center mb-4">Bienvenido a Nanos Land</h2>
+
+                    <form action="login" method="POST">
+
                             <div class="form-group">
                                 <label for="email">Email:</label>
                                 <input type="email" class="form-control" name="email" id="email" placeholder="admin@nanosland.com" required>
