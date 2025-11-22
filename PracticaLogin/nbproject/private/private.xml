@@ -3,29 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/Modelo/Usuario.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/servlet/MarcarTerminadoServlet.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/Modelo/Evento.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/Controlador/Conexion.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/Controlador/ControladorEvento.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/servlet/EliminarUsuarioServlet.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/servlet/ModificarPerfilServlet.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/web/logout.jsp</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/web/cliente_dashboard.jsp</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/web/registro.jsp</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/web/worker_dashboard.jsp</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/servlet/AgendarEventoServlet.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/servlet/LoginServlet.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/web/login.jsp</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/servlet/ModificarEventoServlet.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/servlet/CrearUsuarioServlet.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/web/admin_dashboard.jsp</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/Controlador/ModeloEvento.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/servlet/EliminarEventoServlet.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/Controlador/ControladorUsuario.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/servlet/RegistroServlet.java</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/web/modificar_evento.jsp</file>
-            <file>file:/C:/Users/Cricri/OneDrive/Documentos/NetBeansProjects/PracticaLogin/src/java/Controlador/ModeloUsuario.java</file>
+            <file>file:/C:/Users/skyro/Documents/GitHub/NanosLandWeb/PracticaLogin/web/admin_dashboard.jsp</file>
+            <file>file:/C:/Users/skyro/Documents/GitHub/NanosLandWeb/PracticaLogin/src/java/Controlador/Conexion.java</file>
+            <file>file:/C:/Users/skyro/Documents/GitHub/NanosLandWeb/PracticaLogin/web/login.jsp</file>
+            <file>file:/C:/Users/skyro/Documents/GitHub/NanosLandWeb/PracticaLogin/web/css/styles.css</file>
+            <file>file:/C:/Users/skyro/Documents/GitHub/NanosLandWeb/PracticaLogin/web/img/taco1.jpg</file>
+            <file>file:/C:/Users/skyro/Documents/GitHub/NanosLandWeb/PracticaLogin/src/java/servlet/AgendarEventoServlet.java</file>
         </group>
     </open-files>
 </project-private>

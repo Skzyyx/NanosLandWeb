@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class Conexion {
  
     private final String USERNAME = "root";
-    private final String PASSWORD = "root"; 
+    private final String PASSWORD = "94972Isl"; 
     private final String HOST = "localhost";
     private final String PORT = "3306";
     private final String DATABASE = "nanos_land"; 
@@ -35,6 +35,8 @@ public class Conexion {
             con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch(SQLException e) {
             System.err.println("Error al conectar: " + e);
+        } catch(Exception e) {
+            e.printStackTrace();
         }
         return con; 
     }

@@ -1,0 +1,256 @@
+/* ==========================================================================
+   NANOS LAND - THEME: "FUN & CLEAN" (V3.2 - Dropdown Fixed)
+   Estilo: Amigable, bordes redondos, colores alegres.
+   Corrección: Textos de Select/Dropdown ahora son legibles.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+:root {
+    /* PALETA "PARQUE DE DIVERSIONES" */
+    --color-primary: #00A8E8;     /* Azul Cielo Vibrante */
+    --color-secondary: #FFD43B;   /* Amarillo Soleado */
+    --color-accent: #FF6B6B;      /* Rojo Sandía */
+    --color-green: #4ECC5C;       /* Verde Pasto */
+    
+    --bg-body: #F0F7FF;           /* Fondo azul muy clarito */
+    --bg-sidebar: #FFFFFF;
+    --text-dark: #2C3E50;         /* Gris azulado oscuro */
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--bg-body);
+    /* Patrón de fondo sutil */
+    background-image: radial-gradient(#D9EEFF 15%, transparent 16%),
+                      radial-gradient(#D9EEFF 15%, transparent 16%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+/* --- 1. NAVBAR (Cabecera) --- */
+.navbar {
+    background-color: var(--color-primary) !important;
+    box-shadow: 0 4px 0px rgba(0, 130, 180, 0.5);
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #FFF !important;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+    letter-spacing: 1px;
+}
+
+.navbar-text {
+    font-weight: 700;
+    color: rgba(255,255,255,0.9) !important;
+}
+
+/* --- 2. SIDEBAR --- */
+.sidebar {
+    background-color: var(--bg-sidebar) !important;
+    border-right: 2px solid #E0E0E0;
+    min-height: 100vh;
+    padding-top: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+}
+
+.sidebar-heading {
+    color: var(--color-primary);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    padding: 0 15px 10px 15px;
+}
+
+.sidebar .nav-link {
+    font-weight: 700;
+    color: var(--text-dark);
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin: 5px 15px;
+    transition: all 0.2s ease;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #EDF8FF;
+    color: var(--color-primary);
+    transform: translateX(5px);
+}
+
+.sidebar .nav-link.active {
+    background-color: var(--color-secondary) !important;
+    color: #5c4000 !important;
+    box-shadow: 0 4px 10px rgba(255, 212, 59, 0.4);
+}
+
+.sidebar .nav-link.active i {
+    color: #5c4000 !important;
+}
+
+/* --- 3. CONTENIDO PRINCIPAL --- */
+main[role="main"] {
+    padding-top: 30px;
+}
+
+/* --- 4. TARJETAS --- */
+.card {
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+    border: 4px solid white;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #FFF;
+    border-bottom: 2px solid #F0F7FF;
+    font-weight: 800;
+    font-size: 1.1rem;
+    padding: 15px 25px;
+}
+
+.card-header.bg-primary { background-color: var(--color-primary) !important; color: white; border: none; }
+.card-header.bg-dark { background-color: var(--text-dark) !important; color: white; border: none; }
+.card-header.bg-danger { background-color: var(--color-accent) !important; color: white; border: none; }
+.card-header.bg-secondary { background-color: #E0E0E0 !important; color: var(--text-dark) !important; border: none; }
+
+/* --- 5. BOTONES --- */
+.btn {
+    border-radius: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 10px 25px;
+    border: none;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+    margin-bottom: 4px;
+    transition: transform 0.1s;
+}
+
+.btn:active {
+    transform: translateY(4px);
+    box-shadow: none;
+    margin-bottom: 0;
+}
+
+.btn-primary { background-color: var(--color-primary); color: white; }
+.btn-primary:hover { background-color: #0097D1; color: white; }
+
+.btn-success { background-color: var(--color-green); color: white; }
+.btn-success:hover { background-color: #43B54F; color: white; }
+
+.btn-danger { background-color: var(--color-accent); color: white; }
+.btn-danger:hover { background-color: #FF5252; color: white; }
+
+.btn-sm {
+    padding: 5px 15px;
+    font-size: 0.7rem;
+}
+
+/* --- 6. TABLAS --- */
+.table thead th {
+    border-top: none;
+    border-bottom: 2px solid #E0E0E0;
+    color: var(--color-primary);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+.table td {
+    vertical-align: middle;
+    font-weight: 600;
+}
+
+/* --- 7. LOGIN --- */
+.login-body {
+    background-color: var(--color-primary);
+    background-image: 
+        radial-gradient(rgba(255,255,255,0.2) 15%, transparent 16%),
+        radial-gradient(rgba(255,255,255,0.2) 15%, transparent 16%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-card {
+    background: #ffffff;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 20px 40px rgba(0, 65, 100, 0.2);
+    padding-top: 30px;
+    margin-top: 80px;
+    position: relative;
+    overflow: visible !important;
+}
+
+.login-logo {
+    width: 130px !important;
+    height: 130px !important;
+    object-fit: contain;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: -65px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    border: 5px solid var(--color-secondary);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.login-card h2 {
+    margin-top: 35px;
+    font-weight: 800;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+/* Inputs Generales */
+.form-control {
+    border-radius: 15px;
+    background-color: #F7F9FC;
+    border: 2px solid #E0E0E0;
+    padding: 10px 15px;
+    font-weight: 600;
+    color: var(--text-dark); /* Asegurar que el texto sea oscuro */
+    height: auto;
+}
+.form-control:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 168, 232, 0.2);
+    background-color: #FFF;
+    color: var(--text-dark); /* Mantener texto oscuro al hacer clic */
+}
+
+.btn-block {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+}
+
+/* --- 8. CORRECCIÓN DROPDOWNS (SELECTS) --- */
+/* Forzamos el color del texto y fondo para que sea legible siempre */
+select.form-control {
+    color: #333333 !important; 
+    background-color: #ffffff !important;
+}
+
+/* Específicamente para las opciones dentro de la lista */
+select.form-control option {
+    color: #333333 !important;
+    background-color: #ffffff !important;
+}

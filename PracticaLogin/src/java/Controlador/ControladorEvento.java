@@ -4,16 +4,16 @@
  */package Controlador;
 
 import Modelo.Evento;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date; // Necesario para la fecha actual
-import java.util.concurrent.TimeUnit; // Necesario para calcular la diferencia de días
+import java.util.Date; 
+import java.util.concurrent.TimeUnit; 
 
 public class ControladorEvento {
 
     /**
      * Esta función es para el TRABAJADOR
+     * 
      */
     public String getEventosPendientesHTML() {
         ModeloEvento me = new ModeloEvento();
@@ -33,7 +33,8 @@ public class ControladorEvento {
                     + "<td>" + sdf.format(evento.getFechaEvento()) + "</td>\n"
                     + "<td>" + evento.getPaquete() + "</td>\n"
                     + "<td>\n"
-                    + "<form action='marcarTerminado' method='POST' style='display:inline;'>\n"
+                    // ---  (onsubmit) ---
+                    + "<form action='marcarTerminado' method='POST' style='display:inline;' onsubmit='return confirm(\"¿Confirmas que el evento " + evento.getNombreEvento() + " ha finalizado?\");'>\n"
                     + "<input type='hidden' name='idEvento' value='" + evento.getIdEvento() + "'>\n"
                     + "<button type='submit' class='btn btn-success btn-sm'>Marcar Terminado</button>\n"
                     + "</form>\n"
@@ -44,8 +45,7 @@ public class ControladorEvento {
     }
     
     /**
-     * Esta función es para el CLIENTE
-     * ¡AQUÍ ESTÁ LA LÓGICA DE COLORES Y FECHAS!
+     * Esta función es para el CLIENTE (Semáforo y Colores)
      */
     public String getMisEventosHTML(int idCliente) {
         ModeloEvento me = new ModeloEvento();
@@ -57,39 +57,29 @@ public class ControladorEvento {
         }
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy 'a las' HH:mm");
-        
-        // Obtenemos la fecha de HOY
         Date fechaActual = new Date();
 
         for (Evento evento : lista) {
-            
-            // --- CÁLCULO DE DÍAS RESTANTES ---
             long diferenciaEnMillies = evento.getFechaEvento().getTime() - fechaActual.getTime();
             long diasRestantes = TimeUnit.DAYS.convert(diferenciaEnMillies, TimeUnit.MILLISECONDS);
             
             String claseColor = "";
             String mensajeAlerta = "";
             
-            // Lógica del Semáforo
             if (diasRestantes < 0) {
-                // El evento ya pasó (pero sigue agendado por error)
-                claseColor = "table-secondary"; // Gris
+                claseColor = "table-secondary"; 
                 mensajeAlerta = "El evento ya pasó";
             } else if (diasRestantes <= 3) {
-                // Faltan 3 días o menos: ¡ROJO!
                 claseColor = "table-danger"; 
                 mensajeAlerta = "¡URGENTE! Faltan " + diasRestantes + " días";
             } else if (diasRestantes <= 7) {
-                // Falta una semana o menos: AMARILLO
                 claseColor = "table-warning"; 
                 mensajeAlerta = "Próximo (Faltan " + diasRestantes + " días)";
             } else {
-                // Falta más de una semana: VERDE (o blanco/default)
                 claseColor = "table-success"; 
                 mensajeAlerta = "Faltan " + diasRestantes + " días";
             }
 
-            // Aplicamos la clase de color al <tr> (fila)
             htmlcode += "<tr class='" + claseColor + "'>\n"
                     + "<td><strong>" + evento.getNombreEvento() + "</strong></td>\n"
                     + "<td>" + sdf.format(evento.getFechaEvento()) + "</td>\n"
@@ -115,7 +105,6 @@ public class ControladorEvento {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
         for (Evento evento : lista) {
-            
             String estadoBadge;
             if ("agendado".equals(evento.getEstado())) {
                 estadoBadge = "<span class='badge badge-info'>Agendado</span>";

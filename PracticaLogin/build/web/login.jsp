@@ -5,60 +5,51 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Nanos Land - Iniciar Sesión</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <style>
-        body { background-color: #F3FC08; }
-        .card {
-            border: 2px solid #fbc02d; 
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="login-body">
+    
     <div class="container">
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center">
             <div class="col-md-5">
-                <div class="card shadow-sm">
-                   <div class="card-body p-4">
+                
+                <div class="card login-card">
+                    
+                    <img src="img/logo.png" alt="Nanos Land Logo" class="login-logo">
+                    
+                    <div class="card-body">
+                        <h2 class="mb-4">Bienvenido</h2>
 
-                    <div class="text-center mb-3">
-                        <img src="img/logo.png" alt="Nanos Land Logo" style="width: 150px;">
-                    </div>
-
-                    <h2 class="text-center mb-4">Bienvenido a Nanos Land</h2>
-
-                    <form action="login" method="POST">
-
+                        <form action="login" method="POST">
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="admin@nanosland.com" required>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="correo electrónico" required>
                             </div>
                             <div class="form-group">
                                 <label for="pass">Contraseña:</label>
-                                <input type="password" class="form-control" name="pass" id="pass" placeholder="123" required>
+                                <input type="password" class="form-control" name="pass" id="pass" placeholder="contraseña" required>
                             </div>
                             
-                            <!-- Manejo de Errores -->
                             <% if (request.getParameter("error") != null) { %>
-                                <div class="alert alert-danger" role="alert">
-                                    Email o contraseña incorrectos.
+                                <div class="alert alert-danger text-center mt-3" role="alert">
+                                    Datos incorrectos
                                 </div>
                             <% } %>
-                            
-                            <!-- Mensaje de Éxito de Registro (Lo dejamos por si el admin crea una cuenta y le dice al usuario que ya puede entrar) -->
                             <% if (request.getParameter("exito") != null) { %>
-                                <div class="alert alert-success" role="alert">
-                                    ¡Registro exitoso! Por favor, inicia sesión.
+                                <div class="alert alert-success text-center mt-3" role="alert">
+                                    ¡Registro exitoso!
                                 </div>
                             <% } %>
                             
-                            <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                            
                         </form>
-                        
-                        
-                        
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
+
 </body>
 </html>

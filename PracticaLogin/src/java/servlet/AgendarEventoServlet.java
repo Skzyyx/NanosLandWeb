@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */package servlet;
+package servlet;
 
 import Controlador.ModeloEvento;
 import Modelo.Evento;
@@ -23,8 +20,8 @@ public class AgendarEventoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8"); // Para tildes
         
-        // 1. Verificar que el usuario esté logueado
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("usuario") == null) {
             response.sendRedirect("login.jsp");
@@ -32,41 +29,55 @@ public class AgendarEventoServlet extends HttpServlet {
         }
         
         Usuario usuarioLogueado = (Usuario) session.getAttribute("usuario");
-        
-        // 2. 
-        // Solo el 'admin' puede agendar. 
         if (!"admin".equals(usuarioLogueado.getRol())) {
-            response.sendRedirect("logout.jsp"); // Si no es admin, lo sacamos
+            response.sendRedirect("logout.jsp");
             return;
         }
 
         try {
-            // 3. Obtener datos del formulario del admin
             String nombreEvento = request.getParameter("nombre_evento");
             String fechaStr = request.getParameter("fecha_evento"); 
             String paquete = request.getParameter("paquete");
             double costo = Double.parseDouble(request.getParameter("costo"));
             int idCliente = Integer.parseInt(request.getParameter("id_cliente"));
 
-            // 4. Convertir la fecha
+            // Obtener las actividades manuales del formulario
+            String[] actividadesManuales = request.getParameterValues("actividades");
+
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
             Date fechaEvento = sdf.parse(fechaStr);
 
-            // 5. Crear el objeto Evento
             Evento evento = new Evento();
-            evento.setIdCliente(idCliente); // ID del cliente seleccionado por el admin
+            evento.setIdCliente(idCliente);
             evento.setNombreEvento(nombreEvento);
             evento.setFechaEvento(fechaEvento);
             evento.setPaquete(paquete);
             evento.setCosto(costo);
 
-            // 6. Guardar en la base de datos
             ModeloEvento me = new ModeloEvento();
-            boolean exito = me.agregarEvento(evento);
+            int idEventoGenerado = me.agregarEventoRetornandoId(evento);
 
-            // 7.
-            // Redirigimos de vuelta al panel del ADMIN
-            if (exito) {
+            if (idEventoGenerado != -1) {
+                
+                // --- CORRECCIÓN: YA NO AGREGAMOS ACTIVIDADES AUTOMÁTICAS ---
+                // Solo se guardarán las que el administrador haya escrito explícitamente.
+
+                // Procesar actividades manuales
+                if (actividadesManuales != null) {
+                    for (String actividad : actividadesManuales) {
+                        if (actividad != null && !actividad.trim().isEmpty()) {
+                            me.agregarActividad(idEventoGenerado, actividad.trim());
+                        }
+                    }
+                }
+                
+                // Si no agregó ninguna actividad manual, podríamos agregar una por defecto
+                // para que la lista no quede vacía (Opcional, descomentar si se desea)
+                /*
+                if (actividadesManuales == null || actividadesManuales.length == 0) {
+                    me.agregarActividad(idEventoGenerado, "Verificar detalles del evento");
+                }
+                */
 
                 response.sendRedirect("admin_dashboard.jsp?exito_agenda=1");
             } else {
